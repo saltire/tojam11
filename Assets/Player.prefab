@@ -9,9 +9,10 @@ GameObject:
   m_Component:
   - 4: {fileID: 481468}
   - 212: {fileID: 21244490}
+  - 114: {fileID: 11414572}
   m_Layer: 0
   m_Name: Weapon
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -107,6 +108,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.5}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &11414572
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 112306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60400dd4e05b4694eb06c22b9beb35eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponSpeed: 0.25
+  weaponDistance: 1
 --- !u!114 &11450488
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -119,8 +133,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerNumber: 1
-  weaponSpeed: 1
-  weaponDistance: 1
 --- !u!114 &11455428
 MonoBehaviour:
   m_ObjectHideFlags: 1
