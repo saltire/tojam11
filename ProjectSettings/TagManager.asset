@@ -6,7 +6,9 @@ TagManager:
   tags:
   - Surface
   - Weapon
-  - Platform
+  - BottomTrigger
+  - BottomClear
+  - BottomSurface
   layers:
   - Default
   - TransparentFX
@@ -17,7 +19,7 @@ TagManager:
   - 
   - 
   - Platforms
-  - 
+  - Dead Player
   - 
   - 
   - 

@@ -9,6 +9,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 473370}
   - 212: {fileID: 21217442}
+  - 50: {fileID: 5058016}
+  - 61: {fileID: 6142704}
   m_Layer: 0
   m_Name: wall
   m_TagString: Surface
@@ -54,8 +56,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 125876}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.1, y: 0, z: 10}
-  m_LocalScale: {x: 5.8, y: 6, z: 1}
+  m_LocalPosition: {x: -2.1, y: 0, z: 10}
+  m_LocalScale: {x: 9.8, y: 6, z: 1}
   m_Children: []
   m_Father: {fileID: 481628}
   m_RootOrder: 1
@@ -85,6 +87,37 @@ Transform:
   - {fileID: 408528}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!50 &5058016
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 118818}
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!61 &6142704
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 118818}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: 9e01431ede636e547b4252554ad062f5, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 0.2, y: 6}
 --- !u!212 &21204504
 SpriteRenderer:
   m_ObjectHideFlags: 1

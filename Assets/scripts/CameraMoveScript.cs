@@ -4,6 +4,7 @@ using System.Collections;
 public class CameraMoveScript : MonoBehaviour {
 
 	public float cameraSpeed = 1f;
+	public Collider2D bottomTrigger;
 
 	private float xSize;
 	private float ySize;
@@ -13,8 +14,8 @@ public class CameraMoveScript : MonoBehaviour {
 		players = GameObject.FindGameObjectsWithTag ("Player");
 
 		Camera camera = gameObject.GetComponent<Camera> ();
-		xSize = camera.orthographicSize * camera.aspect * 0.8f;
-		ySize = camera.orthographicSize * 0.8f;
+		xSize = camera.orthographicSize * camera.aspect;
+		ySize = camera.orthographicSize;
 	}
 	
 	void FixedUpdate () {
@@ -25,18 +26,20 @@ public class CameraMoveScript : MonoBehaviour {
 			avgPlayerPos += player.transform.position;
 
 			// Keep a reference to the player that is higher up on the screen.
-			if (topPlayer == null || player.transform.position.y > topPlayer.transform.position.y) {
+			if (!player.GetComponent<PlayerDeathScript>().dead && (topPlayer == null || player.transform.position.y > topPlayer.transform.position.y)) {
 				topPlayer = player;
 			}
 		}
 		avgPlayerPos /= players.Length;
 
-		Vector3 targetPos = new Vector3 (
-			// Don't allow the higher player to go off screen.
-			Mathf.Max(topPlayer.transform.position.x - xSize, Mathf.Min(topPlayer.transform.position.x + xSize, avgPlayerPos.x)), 
-			Mathf.Max(topPlayer.transform.position.y - ySize, avgPlayerPos.y), 
-			transform.position.z);
-		
-		transform.position = Vector3.Lerp (transform.position, targetPos, cameraSpeed * Time.deltaTime);
+		if (topPlayer != null) {
+			Vector3 targetPos = new Vector3 (
+				// Don't allow the higher player to go off screen.
+				Mathf.Max (topPlayer.transform.position.x - xSize, Mathf.Min (topPlayer.transform.position.x + xSize * 0.8f, avgPlayerPos.x)), 
+				Mathf.Max (bottomTrigger.transform.position.y + ySize, Mathf.Max (topPlayer.transform.position.y - ySize * 0.8f, avgPlayerPos.y)), 
+				transform.position.z);
+			
+			transform.position = Vector3.Lerp (transform.position, targetPos, cameraSpeed * Time.deltaTime);
+		}
 	}
 }

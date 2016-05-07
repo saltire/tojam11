@@ -19,7 +19,7 @@ public class PlayerMoveScript : MonoBehaviour {
 			rb2d.AddForce(new Vector2 (horiz * moveSpeed, 0), ForceMode2D.Force);
 
 			// Change the sprite's facing direction.
-			transform.rotation = Quaternion.AngleAxis(Mathf.Atan2(0, horiz) * Mathf.Rad2Deg, Vector3.up);
+			transform.localScale = new Vector3(Mathf.Sign(horiz) * Mathf.Abs (transform.localScale.x), transform.localScale.y, transform.localScale.z);
 		}
 
 		if (holdingJump) {
