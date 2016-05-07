@@ -8,8 +8,10 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 481468}
+  - 60: {fileID: 6000676}
   - 212: {fileID: 21244490}
   - 114: {fileID: 11414572}
+  - 50: {fileID: 5055826}
   m_Layer: 0
   m_Name: Weapon
   m_TagString: Weapon
@@ -31,6 +33,7 @@ GameObject:
   - 58: {fileID: 5882622}
   - 114: {fileID: 11455428}
   - 114: {fileID: 11450488}
+  - 114: {fileID: 11455872}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -63,6 +66,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 426378}
   m_RootOrder: 0
+--- !u!50 &5055826
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 112306}
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!50 &5095092
 Rigidbody2D:
   serializedVersion: 2
@@ -108,6 +128,37 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.5}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!60 &6000676
+PolygonCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 112306}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  m_Points:
+    m_Paths:
+    - - {x: 0.03, y: -0.14}
+      - {x: 0.07, y: -0.13}
+      - {x: 0.16, y: -0.11}
+      - {x: 0.24, y: -0.089999996}
+      - {x: 0.47, y: -0.03}
+      - {x: 0.48999998, y: -0.01}
+      - {x: 0.48999998, y: 0}
+      - {x: 0.45999998, y: 0.03}
+      - {x: 0.099999994, y: 0.12}
+      - {x: -0.01, y: 0.14}
+      - {x: -0.049999997, y: 0.16}
+      - {x: -0.41, y: 0.25}
+      - {x: -0.5, y: 0.25}
+      - {x: -0.5, y: -0.25}
+      - {x: -0.41, y: -0.25}
+      - {x: -0.32, y: -0.22999999}
+      - {x: -0.24, y: -0.21}
 --- !u!114 &11414572
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -119,8 +170,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60400dd4e05b4694eb06c22b9beb35eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponSpeed: 0.25
-  weaponDistance: 1
+  weaponSpeed: 0.1
+  weaponDistance: 2
+  weaponDamage: 1
 --- !u!114 &11450488
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -147,6 +199,18 @@ MonoBehaviour:
   playerNumber: 1
   moveSpeed: 6
   jumpSpeed: 6
+--- !u!114 &11455872
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 148300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b0bfde2c275f7c45a468a54688aa766, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHealth: 5
 --- !u!212 &21205402
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -33,13 +33,13 @@ public class PlayerMoveScript : MonoBehaviour {
 	}
 
 	void OnCollisionStay2D(Collision2D coll) {
-		if (coll.gameObject.tag == "Platform" && coll.contacts[0].normal == Vector2.up) {
+		if (coll.gameObject.CompareTag("Platform") && coll.contacts[0].normal == Vector2.up) {
 			isStanding = true;
 		}
 	}
 
 	void OnCollisionExit2D(Collision2D coll) {
-		if (coll.gameObject.tag == "Platform") {
+		if (coll.gameObject.CompareTag("Platform")) {
 			isStanding = false;
 		}
 	}

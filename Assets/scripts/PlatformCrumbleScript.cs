@@ -8,11 +8,11 @@ public class PlatformCrumbleScript : MonoBehaviour {
 
 	private float crumbleTime = 0f;
 	private Rigidbody2D rb2d;
-	private GameObject camera;
+	private GameObject mainCamera;
 
 	void Start () {
 		rb2d = GetComponent<Rigidbody2D> ();
-		camera = GameObject.FindGameObjectWithTag ("MainCamera");
+		mainCamera = GameObject.FindGameObjectWithTag ("MainCamera");
 	}
 
 	void Update() {
@@ -22,13 +22,13 @@ public class PlatformCrumbleScript : MonoBehaviour {
 	}
 	
 	void OnCollisionStay2D(Collision2D coll) {
-		if (coll.gameObject.tag == "Player") {
+		if (coll.gameObject.CompareTag("Player")) {
 			crumbleTime += Time.deltaTime;
 		}
 	}
 
 	void OnBecameInvisible() {
-		if (!rb2d.isKinematic && transform.position.y < camera.transform.position.y) {
+		if (!rb2d.isKinematic && transform.position.y < mainCamera.transform.position.y) {
 			Destroy (gameObject);
 		}
 	}

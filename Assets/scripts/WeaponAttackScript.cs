@@ -5,7 +5,9 @@ public class WeaponAttackScript : MonoBehaviour {
 
 	public float weaponSpeed = 0.1f;
 	public float weaponDistance = 2f;
+	public float weaponDamage = 1f;
 
+	private Collider2D collider;
 	private bool isAttacking;
 	private bool isReturning;
 	private float weaponTime = 0f;
@@ -13,11 +15,17 @@ public class WeaponAttackScript : MonoBehaviour {
 	public void Attack () {
 		if (!isAttacking && !isReturning) {
 			isAttacking = true;
+			collider.enabled = true;
 			weaponTime = 0f;
 		}
 	}
 
-	void Update() {
+	void Start () {
+		collider = GetComponent<Collider2D> ();
+		collider.enabled = false;
+	}
+
+	void Update () {
 		if (isAttacking) {
 			weaponTime += Time.deltaTime;
 			transform.localPosition = Vector3.Lerp (
@@ -39,6 +47,7 @@ public class WeaponAttackScript : MonoBehaviour {
 
 			if (weaponTime >= weaponSpeed) {
 				isReturning = false;
+				collider.enabled = false;
 			}
 		}
 	}
