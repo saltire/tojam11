@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class PlayerMoveScript : MonoBehaviour {
 
@@ -7,11 +8,8 @@ public class PlayerMoveScript : MonoBehaviour {
 	public float moveSpeed = 10f;
 	public float jumpSpeed = 10f;
 
-	private bool isStanding = false;
-	
-	void Start () {
-	
-	}
+	private bool holdingJump = false;
+	private Collision2D surfaceCollision;
 
 	void FixedUpdate () {
 		Rigidbody2D rb2d = GetComponent<Rigidbody2D> ();
@@ -24,23 +22,33 @@ public class PlayerMoveScript : MonoBehaviour {
 			transform.rotation = Quaternion.AngleAxis(Mathf.Atan2(0, horiz) * Mathf.Rad2Deg, Vector3.up);
 		}
 
-		if (isStanding) {
+		if (holdingJump) {
+			if (Input.GetAxis ("Jump " + playerNumber) == 0f) {
+				holdingJump = false;
+			}
+		}
+		else if (surfaceCollision != null) {
 			float jump = Input.GetAxis ("Jump " + playerNumber);
 			if (jump != 0f) {
-				rb2d.AddForce (new Vector2 (0, jump * jumpSpeed), ForceMode2D.Impulse);
+				holdingJump = true;
+
+				// Jump in the direction halfway between the surface normal and up.
+				rb2d.AddForce ((surfaceCollision.contacts [0].normal + Vector2.up).normalized * jump * jumpSpeed, ForceMode2D.Impulse);
 			}
 		}
 	}
 
 	void OnCollisionStay2D(Collision2D coll) {
-		if (coll.gameObject.CompareTag("Platform") && coll.contacts[0].normal == Vector2.up) {
-			isStanding = true;
+		if (coll.gameObject.CompareTag("Surface")) {
+			if (Vector2.Angle (coll.contacts [0].normal, Vector2.up) <= 90f) {
+				surfaceCollision = coll;
+			}
 		}
 	}
 
 	void OnCollisionExit2D(Collision2D coll) {
-		if (coll.gameObject.CompareTag("Platform")) {
-			isStanding = false;
+		if (surfaceCollision != null && surfaceCollision.gameObject == coll.gameObject) {
+			surfaceCollision = null;
 		}
 	}
 }

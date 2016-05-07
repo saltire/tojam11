@@ -5,10 +5,9 @@ public class PlayerDamageScript : MonoBehaviour {
 
 	public float playerHealth = 5f;
 
-	void OnTriggerEnter2D (Collider2D coll) {
+	void OnTriggerStay2D (Collider2D coll) {
 		if (coll.CompareTag ("Weapon") && !coll.transform.IsChildOf(transform)) {
-			playerHealth -= coll.GetComponent<WeaponAttackScript> ().weaponDamage;
-			Debug.Log (playerHealth);
+			playerHealth = Mathf.Max(0f, playerHealth - coll.GetComponent<WeaponAttackScript> ().weaponDPS * Time.deltaTime);
 		}
 	}
 }
