@@ -32,8 +32,8 @@ public class PlayerMoveScript : MonoBehaviour {
 			if (jump != 0f) {
 				holdingJump = true;
 
-				// Jump in the direction halfway between the surface normal and up.
-				rb2d.AddForce ((surfaceCollision.contacts [0].normal + Vector2.up).normalized * jump * jumpSpeed, ForceMode2D.Impulse);
+				// Jump in the direction 2/3 of the way between the surface normal and up.
+				rb2d.AddForce ((surfaceCollision.contacts [0].normal + Vector2.up + Vector2.up).normalized * jump * jumpSpeed, ForceMode2D.Impulse);
 			}
 		}
 	}

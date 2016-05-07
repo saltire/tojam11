@@ -10,8 +10,8 @@ GameObject:
   - 4: {fileID: 489152}
   - 212: {fileID: 21254118}
   - 50: {fileID: 5032148}
-  - 61: {fileID: 6175226}
-  m_Layer: 0
+  - 61: {fileID: 6116680}
+  m_Layer: 8
   m_Name: Platform (Solid)
   m_TagString: Platform
   m_Icon: {fileID: 0}
@@ -25,8 +25,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 169346}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.09, y: -3.12, z: 0}
-  m_LocalScale: {x: 0.6, y: 0.6, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -47,7 +47,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &6175226
+--- !u!61 &6116680
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -60,7 +60,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 4, y: 0.4}
+  m_Size: {x: 2.4, y: 0.24}
 --- !u!212 &21254118
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -87,7 +87,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f12aa44ec95f30745a2aad3633867e26, type: 3}
+  m_Sprite: {fileID: 21300000, guid: faddba56373577a45b60664e2707e3e1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
