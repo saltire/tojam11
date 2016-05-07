@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MoveScript : MonoBehaviour {
+public class PlayerMoveScript : MonoBehaviour {
 
-	public float playerNumber = 1f;
+	public int playerNumber = 1;
 	public float moveSpeed = 10f;
 	public float jumpSpeed = 10f;
 
@@ -19,6 +19,9 @@ public class MoveScript : MonoBehaviour {
 		float horiz = Input.GetAxis ("Horizontal " + playerNumber);
 		if (horiz != 0f) {
 			rb2d.AddForce(new Vector2 (horiz * moveSpeed, 0), ForceMode2D.Force);
+
+			// Change the sprite's facing direction.
+			transform.rotation = Quaternion.AngleAxis(Mathf.Atan2(0, horiz) * Mathf.Rad2Deg, Vector3.up);
 		}
 
 		if (isStanding) {
