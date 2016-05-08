@@ -26,6 +26,7 @@ public class CameraMoveScript : MonoBehaviour {
 	
 	void FixedUpdate () {
 		Vector3 avgPlayerPos = Vector3.zero;
+		int avgPlayerCount = 0;
 		GameObject topPlayer = null;
 
 		foreach (GameObject player in players) {
@@ -35,19 +36,20 @@ public class CameraMoveScript : MonoBehaviour {
 			}
 
 			avgPlayerPos += player.transform.position;
+			avgPlayerCount += 1;
 
 			// Keep a reference to the player that is higher up on the screen.
 			if (!player.GetComponent<PlayerDeathScript>().dead && (topPlayer == null || player.transform.position.y > topPlayer.transform.position.y)) {
 				topPlayer = player;
 			}
 		}
-		avgPlayerPos /= players.Length;
+		avgPlayerPos /= avgPlayerCount;
 
 		if (topPlayer != null) {
 			Vector3 targetPos = new Vector3 (
 				// Don't allow the higher player to go off screen.
 				Mathf.Max (topPlayer.transform.position.x - xSize, Mathf.Min (topPlayer.transform.position.x + xSize * 0.8f, avgPlayerPos.x)), 
-				Mathf.Max (bottomTrigger.transform.position.y + ySize, Mathf.Max (topPlayer.transform.position.y - ySize * 0.8f, avgPlayerPos.y)), 
+				Mathf.Max (bottomTrigger.transform.position.y + ySize, topPlayer.transform.position.y - ySize * 0.8f, avgPlayerPos.y), 
 				transform.position.z);
 			
 			transform.position = Vector3.Lerp (transform.position, targetPos, cameraSpeed * Time.deltaTime);
