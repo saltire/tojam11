@@ -19,6 +19,7 @@ public class PlayerDamageScript : MonoBehaviour {
 		playerHealth = Mathf.Max(0f, playerHealth - damage);
 		stunLength += damage * stunFactor;
 		stunned = true;
+		GetComponentInChildren<WeaponAttackScript> ().InterruptAttack ();
 	}
 
 	void FixedUpdate () {

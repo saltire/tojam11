@@ -27,10 +27,14 @@ public class WeaponAttackScript : MonoBehaviour {
 		}
 	}
 
+	public void InterruptAttack() {
+		isAttacking = false;
+		isReturning = false;
+		transform.localPosition = Vector3.zero;
+	}
+
 	void Start () {
 		anim = GetComponentInParent<Animator> ();
-
-		Animation an = GetComponentInParent<Animation> ();
 
 		coll = GetComponent<Collider2D> ();
 		coll.enabled = false;
@@ -60,9 +64,9 @@ public class WeaponAttackScript : MonoBehaviour {
 			if (elapsed >= stageTime) {
 				isReturning = false;
 				coll.enabled = false;
-				weaponCooldownTime = weaponCooldown;
 
 				anim.SetTrigger ("AttackFinished");
+				weaponCooldownTime = weaponCooldown;
 			}
 		} 
 		else if (weaponCooldownTime > 0f) {

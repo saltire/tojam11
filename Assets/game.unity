@@ -336,9 +336,14 @@ Prefab:
       propertyPath: weaponDistance
       value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 11450488, guid: 2d7c3ebd70acb5c4ebdce4f1269dae0c, type: 2}
+      propertyPath: weaponType
+      value: 
+      objectReference: {fileID: 11485858, guid: 1af0976f26439c948ae6c122f898cdb2,
+        type: 2}
     - target: {fileID: 11455872, guid: 2d7c3ebd70acb5c4ebdce4f1269dae0c, type: 2}
       propertyPath: stunFactor
-      value: 0.1
+      value: 0.05
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2d7c3ebd70acb5c4ebdce4f1269dae0c, type: 2}
@@ -598,11 +603,11 @@ Prefab:
     - target: {fileID: 11450488, guid: 2d7c3ebd70acb5c4ebdce4f1269dae0c, type: 2}
       propertyPath: weaponType
       value: 
-      objectReference: {fileID: 11402018, guid: aad71663892f3e943a0dc8313511bd60,
+      objectReference: {fileID: 11485858, guid: 1af0976f26439c948ae6c122f898cdb2,
         type: 2}
     - target: {fileID: 11455872, guid: 2d7c3ebd70acb5c4ebdce4f1269dae0c, type: 2}
       propertyPath: stunFactor
-      value: 0.1
+      value: 0.05
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2d7c3ebd70acb5c4ebdce4f1269dae0c, type: 2}

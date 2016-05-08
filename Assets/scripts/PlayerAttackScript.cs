@@ -14,9 +14,13 @@ public class PlayerAttackScript : MonoBehaviour {
 	}
 
 	void Update () {
-		float attack = Input.GetAxis ("Attack " + playerNumber);
-		if (attack != 0f) {
-			weapon.GetComponent<WeaponAttackScript>().Attack ();
+		bool stunned = GetComponent<PlayerDamageScript> ().stunned;
+
+		if (!stunned) {
+			float attack = Input.GetAxis ("Attack " + playerNumber);
+			if (attack != 0f) {
+				weapon.GetComponent<WeaponAttackScript> ().Attack ();
+			}
 		}
 	}
 }

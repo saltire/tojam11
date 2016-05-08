@@ -50,8 +50,8 @@ public class PlayerMoveScript : MonoBehaviour {
 	}
 
 	void OnCollisionStay2D(Collision2D coll) {
-		// Contacting a surface.
-		if (coll.gameObject.CompareTag("Surface")) {
+		// Contacting a surface or another player. Store the collider as something we can jump from.
+		if (coll.gameObject.CompareTag("Surface") || coll.gameObject.CompareTag("Player")) {
 			if (coll.contacts [0].normal.y >= 0f) {
 				surfaceCollision = coll;
 			}

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class TitleScript : MonoBehaviour {
+public class TitleSpotlightScript : MonoBehaviour {
 
 	public Light spotlight;
 	public float lightMoveTime = 1f;
@@ -11,13 +11,13 @@ public class TitleScript : MonoBehaviour {
 	private Vector3 finalPos;
 
 	void Start () {
-		startPos = spotlight.transform.position;
-		finalPos = new Vector3(-startPos.x, startPos.y, startPos.z);
+		startPos = spotlight.transform.localPosition;
+		finalPos = new Vector3(-startPos.x, -startPos.y, startPos.z);
 	}
 	
 	void Update () {
 		if (Time.time <= lightMoveTime) {
-			spotlight.transform.position = Vector3.Lerp (startPos, finalPos, Time.time / lightMoveTime);
+			spotlight.transform.localPosition = Vector3.Lerp (startPos, finalPos, Time.time / lightMoveTime);
 		} 
 		else if (Time.time <= lightMoveTime + fadeTime) {
 			SpriteRenderer renderer = GetComponent<SpriteRenderer> ();

@@ -1,10 +1,15 @@
 fileFormatVersion: 2
 guid: e24d2bbc7afc90d43a230b1e8231d5b2
-timeCreated: 1462721927
+timeCreated: 1462726043
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: title
+    21300002: player1
+    21300004: player2
+    21300006: defeated
+    21300008: fell
+    21300010: press_start
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -54,70 +59,123 @@ TextureImporter:
     - name: title
       rect:
         serializedVersion: 2
-        x: 0
-        y: 118
-        width: 150
-        height: 115
+        x: 4
+        y: 123
+        width: 143
+        height: 106
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -3, y: 3.5}
-        - {x: -65, y: -16.5}
-        - {x: -65, y: -54.5}
-        - {x: 50, y: -54.5}
-        - {x: 65, y: -39.5}
-        - {x: 65, y: -9.5}
-        - {x: 61, y: 3.5}
-      - - {x: 63, y: -14.5}
-        - {x: 62, y: -15.5}
-        - {x: 62, y: -23.5}
-        - {x: 65, y: -24.5}
-        - {x: 72, y: -24.5}
-        - {x: 72, y: -17.5}
-        - {x: 71, y: -14.5}
-      - - {x: -15, y: 9.5}
-        - {x: -23, y: 4.5}
-        - {x: -27, y: -4.5}
-        - {x: -27, y: -14.5}
-        - {x: -21, y: -19.5}
-        - {x: -10, y: -19.5}
-        - {x: -4, y: -16.5}
-        - {x: -3, y: -10.5}
-        - {x: -3, y: 5.5}
-        - {x: -5, y: 9.5}
-      - - {x: 73, y: 16.5}
-        - {x: 65, y: 16.5}
-        - {x: 63, y: 10.5}
-        - {x: 63, y: -14.5}
-        - {x: 70, y: -14.5}
-        - {x: 74, y: -12.5}
-        - {x: 74, y: 15.5}
-      - - {x: -69, y: 55.5}
-        - {x: -73, y: 51.5}
-        - {x: -73, y: 43.5}
-        - {x: -71, y: 41.5}
-        - {x: -70, y: 41.5}
-        - {x: -68, y: 10.5}
-        - {x: -48, y: 10.5}
-        - {x: -46, y: 13.5}
-        - {x: -46, y: 55.5}
-      - - {x: 7, y: 42.5}
-        - {x: 5, y: 40.5}
-        - {x: 5, y: 38.5}
-        - {x: 7, y: 22.5}
-        - {x: 2, y: 31.5}
-        - {x: 0, y: 33.5}
-        - {x: 3, y: 33.5}
-        - {x: 5, y: 35.5}
-        - {x: 5, y: 40.5}
-        - {x: 4, y: 42.5}
-        - {x: -50, y: 42.5}
-        - {x: -52, y: 37.5}
-        - {x: -52, y: 10.5}
-        - {x: 28, y: 10.5}
-        - {x: 28, y: 33.5}
-        - {x: 22, y: 42.5}
+      - - {x: 0.5, y: 3}
+        - {x: -5.5, y: 2}
+        - {x: -62.5, y: -16}
+        - {x: -65.5, y: -29}
+        - {x: -65.5, y: -53}
+        - {x: 45.5, y: -53}
+        - {x: 64.5, y: -37}
+        - {x: 64.5, y: 3}
+      - - {x: 62.5, y: -15}
+        - {x: 61.5, y: -18}
+        - {x: 61.5, y: -24}
+        - {x: 64.5, y: -25}
+        - {x: 70.5, y: -25}
+        - {x: 71.5, y: -22}
+        - {x: 71.5, y: -16}
+        - {x: 68.5, y: -15}
+      - - {x: -16.5, y: 9}
+        - {x: -23.5, y: 4}
+        - {x: -27.5, y: -5}
+        - {x: -27.5, y: -15}
+        - {x: -21.5, y: -20}
+        - {x: -10.5, y: -20}
+        - {x: -5.5, y: -18}
+        - {x: -3.5, y: -8}
+        - {x: -3.5, y: 7}
+        - {x: -7.5, y: 9}
+      - - {x: 64.5, y: 16}
+        - {x: 62.5, y: 11}
+        - {x: 62.5, y: -15}
+        - {x: 71.5, y: -15}
+        - {x: 71.5, y: 16}
+      - - {x: -70.5, y: 53}
+        - {x: -71.5, y: 52}
+        - {x: -71.5, y: 29}
+        - {x: -68.5, y: 10}
+        - {x: -48.5, y: 10}
+        - {x: -46.5, y: 13}
+        - {x: -46.5, y: 53}
+      - - {x: 6.5, y: 42}
+        - {x: 4.5, y: 40}
+        - {x: 4.5, y: 38}
+        - {x: 6.5, y: 22}
+        - {x: 1.5, y: 31}
+        - {x: -0.5, y: 33}
+        - {x: 2.5, y: 33}
+        - {x: 4.5, y: 35}
+        - {x: 4.5, y: 40}
+        - {x: 3.5, y: 42}
+        - {x: -49.5, y: 42}
+        - {x: -52.5, y: 40}
+        - {x: -52.5, y: 10}
+        - {x: 27.5, y: 10}
+        - {x: 27.5, y: 33}
+        - {x: 21.5, y: 42}
+    - name: player1
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 90
+        width: 101
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: player2
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 65
+        width: 101
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: defeated
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 39
+        width: 84
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: fell
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 19
+        width: 50
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: press_start
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 3
+        width: 50
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     outline: []
   spritePackingTag: 
   userData: 
