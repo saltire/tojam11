@@ -6,6 +6,7 @@ public class WeaponAttackScript : MonoBehaviour {
 	public float weaponAttackTime = 0.5f;
 	public float weaponDistance = 0.5f;
 	public float weaponDPS = 1f;
+	public float weaponPush = 0f;
 	public string playerSpriteName;
 
 	private Animator anim;
@@ -63,6 +64,12 @@ public class WeaponAttackScript : MonoBehaviour {
 	void OnTriggerStay2D (Collider2D coll) {
 		if (coll.CompareTag ("Player") && !transform.IsChildOf(coll.transform)) {
 			coll.GetComponent<PlayerDamageScript>().DealDamage (weaponDPS * Time.deltaTime);
+
+			if (weaponPush > 0f) {
+				coll.attachedRigidbody.AddForce (
+					Vector2.Scale (new Vector2 (transform.parent.localScale.x, 0f), Vector2.right) * weaponPush * Time.deltaTime, 
+					ForceMode2D.Force);
+			}
 		}
 	}
 }

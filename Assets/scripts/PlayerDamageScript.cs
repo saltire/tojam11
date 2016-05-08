@@ -27,8 +27,8 @@ public class PlayerDamageScript : MonoBehaviour {
 		}
 
 		if (stunned) {
-			stunLength -= Time.deltaTime;
-			if (stunLength <= 0f) {
+			stunLength = Mathf.Max(0f, stunLength - Time.deltaTime);
+			if (stunLength == 0f) {
 				stunned = false;
 			}
 		}

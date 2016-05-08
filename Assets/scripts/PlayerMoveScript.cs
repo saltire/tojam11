@@ -42,7 +42,7 @@ public class PlayerMoveScript : MonoBehaviour {
 
 		// Set parameters in the animation controller.
 		Animator anim = GetComponent<Animator>();
-		anim.SetFloat ("MoveSpeed", Mathf.Abs(rb2d.velocity.x));
+		anim.SetFloat ("MoveSpeed", Mathf.Abs(horiz * moveSpeed));
 		anim.SetFloat ("VerticalSpeed", rb2d.velocity.y);
 		anim.SetBool ("Standing", surfaceCollision != null && surfaceCollision.contacts [0].normal.y > 0f);
 		anim.SetBool ("Sliding", surfaceCollision != null && surfaceCollision.contacts [0].normal.y == 0f);
