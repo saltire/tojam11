@@ -16,6 +16,6 @@ public class HealthBarScript : MonoBehaviour {
 	}
 	
 	void Update () {
-		rect.sizeDelta = new Vector2 (initialXSize * player.playerHealth / initialHealth, rect.sizeDelta.y);
+		rect.sizeDelta = new Vector2 (Mathf.Max(0.01f, initialXSize * player.playerHealth / initialHealth), rect.sizeDelta.y);
 	}
 }

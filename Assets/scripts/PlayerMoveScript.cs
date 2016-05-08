@@ -14,7 +14,9 @@ public class PlayerMoveScript : MonoBehaviour {
 	void FixedUpdate () {
 		Rigidbody2D rb2d = GetComponent<Rigidbody2D> ();
 
-		float horiz = Input.GetAxis ("Horizontal " + playerNumber);
+		bool stunned = GetComponent<PlayerDamageScript> ().stunned;
+
+		float horiz = stunned ? 0f : Input.GetAxis ("Horizontal " + playerNumber);
 		if (horiz != 0f) {
 			rb2d.AddForce(new Vector2 (horiz * moveSpeed, 0), ForceMode2D.Force);
 
@@ -22,7 +24,7 @@ public class PlayerMoveScript : MonoBehaviour {
 			transform.localScale = new Vector3(Mathf.Sign(horiz) * Mathf.Abs (transform.localScale.x), transform.localScale.y, transform.localScale.z);
 		}
 
-		if (surfaceCollision != null && !holdingJump) {
+		if (surfaceCollision != null && !holdingJump && !stunned) {
 			float jump = Input.GetAxis ("Jump " + playerNumber);
 			if (jump != 0f) {
 				holdingJump = true;
@@ -40,10 +42,11 @@ public class PlayerMoveScript : MonoBehaviour {
 
 		// Set parameters in the animation controller.
 		Animator anim = GetComponent<Animator>();
-		anim.SetFloat ("MoveSpeed", Mathf.Abs(horiz * moveSpeed));
+		anim.SetFloat ("MoveSpeed", Mathf.Abs(rb2d.velocity.x));
 		anim.SetFloat ("VerticalSpeed", rb2d.velocity.y);
 		anim.SetBool ("Standing", surfaceCollision != null && surfaceCollision.contacts [0].normal.y > 0f);
 		anim.SetBool ("Sliding", surfaceCollision != null && surfaceCollision.contacts [0].normal.y == 0f);
+		anim.SetBool ("Stunned", stunned);
 	}
 
 	void OnCollisionStay2D(Collision2D coll) {

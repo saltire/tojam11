@@ -160,6 +160,7 @@ MonoBehaviour:
   weaponAttackTime: 0.5
   weaponDistance: 0.5
   weaponDPS: 1
+  playerSpriteName: 
 --- !u!114 &11441154
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -212,6 +213,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHealth: 5
+  drainAmount: 1
+  stunFactor: 0.1
+  stunned: 0
 --- !u!114 &11469910
 MonoBehaviour:
   m_ObjectHideFlags: 1

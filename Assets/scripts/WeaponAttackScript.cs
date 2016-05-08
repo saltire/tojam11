@@ -59,4 +59,10 @@ public class WeaponAttackScript : MonoBehaviour {
 			}
 		}
 	}
+
+	void OnTriggerStay2D (Collider2D coll) {
+		if (coll.CompareTag ("Player") && !transform.IsChildOf(coll.transform)) {
+			coll.GetComponent<PlayerDamageScript>().DealDamage (weaponDPS * Time.deltaTime);
+		}
+	}
 }

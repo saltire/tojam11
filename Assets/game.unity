@@ -1229,10 +1229,6 @@ Prefab:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 22470672, guid: 783e47af1be5bfa4693a6d36cb5db481, type: 2}
-      propertyPath: m_SizeDelta.y
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 22470672, guid: 783e47af1be5bfa4693a6d36cb5db481, type: 2}
       propertyPath: m_AnchorMin.x
       value: 0.5
       objectReference: {fileID: 0}
@@ -1271,10 +1267,6 @@ Prefab:
     - target: {fileID: 22440836, guid: 783e47af1be5bfa4693a6d36cb5db481, type: 2}
       propertyPath: m_Pivot.x
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 22470672, guid: 783e47af1be5bfa4693a6d36cb5db481, type: 2}
-      propertyPath: m_SizeDelta.x
-      value: 2.72
       objectReference: {fileID: 0}
     - target: {fileID: 11487520, guid: 783e47af1be5bfa4693a6d36cb5db481, type: 2}
       propertyPath: m_Color.r
