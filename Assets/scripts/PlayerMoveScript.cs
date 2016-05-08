@@ -22,12 +22,7 @@ public class PlayerMoveScript : MonoBehaviour {
 			transform.localScale = new Vector3(Mathf.Sign(horiz) * Mathf.Abs (transform.localScale.x), transform.localScale.y, transform.localScale.z);
 		}
 
-		if (holdingJump) {
-			if (Input.GetAxis ("Jump " + playerNumber) == 0f) {
-				holdingJump = false;
-			}
-		}
-		else if (surfaceCollision != null) {
+		if (surfaceCollision != null && !holdingJump) {
 			float jump = Input.GetAxis ("Jump " + playerNumber);
 			if (jump != 0f) {
 				holdingJump = true;
@@ -36,11 +31,24 @@ public class PlayerMoveScript : MonoBehaviour {
 				rb2d.AddForce ((surfaceCollision.contacts [0].normal + Vector2.up + Vector2.up).normalized * jump * jumpSpeed, ForceMode2D.Impulse);
 			}
 		}
+
+		if (holdingJump) {
+			if (Input.GetAxis ("Jump " + playerNumber) == 0f) {
+				holdingJump = false;
+			}
+		}
+
+		// Set parameters in the animation controller.
+		Animator anim = GetComponent<Animator>();
+		anim.SetFloat ("MoveSpeed", Mathf.Abs(horiz * moveSpeed));
+		anim.SetFloat ("VerticalSpeed", rb2d.velocity.y);
+		anim.SetBool ("Standing", surfaceCollision != null && surfaceCollision.contacts [0].normal.y > 0f);
+		anim.SetBool ("Sliding", surfaceCollision != null && surfaceCollision.contacts [0].normal.y == 0f);
 	}
 
 	void OnCollisionStay2D(Collision2D coll) {
 		if (coll.gameObject.CompareTag("Surface")) {
-			if (Vector2.Angle (coll.contacts [0].normal, Vector2.up) <= 90f) {
+			if (coll.contacts [0].normal.y >= 0f) {
 				surfaceCollision = coll;
 			}
 		}

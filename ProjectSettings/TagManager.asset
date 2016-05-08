@@ -7,7 +7,6 @@ TagManager:
   - Surface
   - Weapon
   - BottomTrigger
-  - BottomClear
   - BottomSurface
   layers:
   - Default

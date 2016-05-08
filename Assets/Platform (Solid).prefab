@@ -13,7 +13,7 @@ GameObject:
   - 61: {fileID: 6116680}
   m_Layer: 8
   m_Name: Platform (Solid)
-  m_TagString: Platform
+  m_TagString: Surface
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -60,7 +60,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 2.4, y: 0.24}
+  m_Size: {x: 2.5, y: 0.25}
 --- !u!212 &21254118
 SpriteRenderer:
   m_ObjectHideFlags: 1
