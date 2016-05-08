@@ -4,7 +4,6 @@ using System.Collections;
 public class PlatformCrumbleScript : MonoBehaviour {
 
 	public float crumbleLength = 1f;
-	public float destroyTime = 10f;
 	public float fallDamage = 1f;
 
 	private float crumbleTime = 0f;

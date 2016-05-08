@@ -5,6 +5,7 @@ public class LevelBuilderScript : MonoBehaviour {
 
 	public GameObject[] platformSets;
 	public float startHeight = 0f;
+	public float maxHeight = 45f;
 	public float platformSetHeight = 6f;
 
 	private float levelTop;
@@ -19,11 +20,13 @@ public class LevelBuilderScript : MonoBehaviour {
 	}
 
 	void Update () {
-		while (mainCamera.transform.position.y + ySize >= levelTop) {
-			Instantiate (
-				platformSets[Random.Range(0, platformSets.Length)], 
-				new Vector3 (0f, levelTop, 0f), Quaternion.identity);
-			levelTop += platformSetHeight;
+		if (levelTop < maxHeight) {
+			while (mainCamera.transform.position.y + ySize >= levelTop) {
+				Instantiate (
+					platformSets [Random.Range (0, platformSets.Length)], 
+					new Vector3 (0f, levelTop, 0f), Quaternion.identity);
+				levelTop += platformSetHeight;
+			}
 		}
 	}
 }
