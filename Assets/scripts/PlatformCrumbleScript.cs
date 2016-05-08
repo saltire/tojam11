@@ -5,14 +5,13 @@ public class PlatformCrumbleScript : MonoBehaviour {
 
 	public float crumbleLength = 1f;
 	public float destroyTime = 10f;
+	public float fallDamage = 1f;
 
 	private float crumbleTime = 0f;
 	private Rigidbody2D rb2d;
-	private GameObject mainCamera;
 
 	void Start () {
 		rb2d = GetComponent<Rigidbody2D> ();
-		mainCamera = GameObject.FindGameObjectWithTag ("MainCamera");
 	}
 
 	void Update() {
@@ -24,12 +23,11 @@ public class PlatformCrumbleScript : MonoBehaviour {
 	void OnCollisionStay2D(Collision2D coll) {
 		if (coll.gameObject.CompareTag("Player")) {
 			crumbleTime += Time.deltaTime;
-		}
-	}
 
-	void OnBecameInvisible() {
-		if (!rb2d.isKinematic && transform.position.y < mainCamera.transform.position.y) {
-			Destroy (gameObject);
+			// If platform is falling, and hits a player from above, deal damage.
+			if (!rb2d.isKinematic && coll.contacts [0].normal.y > 0f) {
+				coll.gameObject.GetComponent<PlayerDamageScript>().DealDamage (fallDamage);
+			}
 		}
 	}
 }

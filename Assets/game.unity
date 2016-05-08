@@ -257,6 +257,10 @@ Prefab:
       propertyPath: playerSpriteName
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 11414572, guid: 2d7c3ebd70acb5c4ebdce4f1269dae0c, type: 2}
+      propertyPath: weaponDistance
+      value: 0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2d7c3ebd70acb5c4ebdce4f1269dae0c, type: 2}
   m_IsPrefabParent: 0
@@ -573,6 +577,18 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[1].y
       value: -0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 11414572, guid: 2d7c3ebd70acb5c4ebdce4f1269dae0c, type: 2}
+      propertyPath: playerSpriteName
+      value: weapon
+      objectReference: {fileID: 0}
+    - target: {fileID: 11414572, guid: 2d7c3ebd70acb5c4ebdce4f1269dae0c, type: 2}
+      propertyPath: weaponDPS
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11414572, guid: 2d7c3ebd70acb5c4ebdce4f1269dae0c, type: 2}
+      propertyPath: weaponDistance
+      value: 0.4
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}

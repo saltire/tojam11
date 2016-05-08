@@ -6,6 +6,7 @@ public class WeaponAttackScript : MonoBehaviour {
 	public float weaponAttackTime = 0.5f;
 	public float weaponDistance = 0.5f;
 	public float weaponDPS = 1f;
+	public string playerSpriteName;
 
 	private Animator anim;
 	private Collider2D coll;
@@ -30,6 +31,10 @@ public class WeaponAttackScript : MonoBehaviour {
 		coll.enabled = false;
 
 		stageTime = weaponAttackTime / 2f;
+
+		if (playerSpriteName.Length > 0f) {
+			GetComponentInParent<PlayerSpriteScript> ().playerSpriteName = playerSpriteName;
+		}
 	}
 
 	void Update () {

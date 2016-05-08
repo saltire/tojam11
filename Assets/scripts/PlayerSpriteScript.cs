@@ -9,14 +9,10 @@ public class PlayerSpriteScript : MonoBehaviour {
 
 	private List<Sprite> subSprites;
 
-	void Start() {
-		if (playerSpriteName.Length > 0f) {
-			subSprites = Resources.LoadAll<Sprite> (playerSpriteName + "/player").ToList();
-		}
-	}
-	
 	void LateUpdate () {
 		if (playerSpriteName.Length > 0f) {
+			subSprites = Resources.LoadAll<Sprite> (playerSpriteName + "/player").ToList();
+
 			SpriteRenderer renderer = GetComponent<SpriteRenderer> ();
 			renderer.sprite = subSprites.Find (subSprite => subSprite.name == renderer.sprite.name);
 		}

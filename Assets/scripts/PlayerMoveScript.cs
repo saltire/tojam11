@@ -47,6 +47,7 @@ public class PlayerMoveScript : MonoBehaviour {
 	}
 
 	void OnCollisionStay2D(Collision2D coll) {
+		// Contacting a surface.
 		if (coll.gameObject.CompareTag("Surface")) {
 			if (coll.contacts [0].normal.y >= 0f) {
 				surfaceCollision = coll;
@@ -55,8 +56,16 @@ public class PlayerMoveScript : MonoBehaviour {
 	}
 
 	void OnCollisionExit2D(Collision2D coll) {
+		// Leaving a surface.
 		if (surfaceCollision != null && surfaceCollision.gameObject == coll.gameObject) {
 			surfaceCollision = null;
+		}
+	}
+
+	void OnTriggerEnter2D(Collider2D coll) {
+		// Drain health if hitting the bottom of the screen.
+		if (coll.CompareTag("BottomTrigger")) {
+			GetComponent<PlayerDamageScript>().DrainHealth ();
 		}
 	}
 }

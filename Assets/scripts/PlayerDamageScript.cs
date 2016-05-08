@@ -4,8 +4,23 @@ using System.Collections;
 public class PlayerDamageScript : MonoBehaviour {
 
 	public float playerHealth = 5f;
+	public float drainAmount = 1f;
+
+	private bool draining = false;
+
+	public void DrainHealth () {
+		draining = true;
+	}
+
+	public void DealDamage (float damage) {
+		playerHealth -= damage;
+	}
 
 	void Update () {
+		if (draining) {
+			DealDamage (drainAmount);
+		}
+
 		if (playerHealth <= 0f) {
 			GetComponent<PlayerDeathScript> ().Kill ();
 		}

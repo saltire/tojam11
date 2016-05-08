@@ -24,10 +24,4 @@ public class PlayerDeathScript : MonoBehaviour {
 			rb2d.AddTorque (pushRotation * facingDirection, ForceMode2D.Impulse);
 		}
 	}
-
-	void OnTriggerEnter2D(Collider2D coll) {
-		if (coll.CompareTag("BottomTrigger")) {
-			Kill ();
-		}
-	}
 }
