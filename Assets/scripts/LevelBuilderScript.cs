@@ -3,7 +3,8 @@ using System.Collections;
 
 public class LevelBuilderScript : MonoBehaviour {
 
-	public GameObject platformSet;
+	public GameObject[] platformSets;
+	public float startHeight = 0f;
 	public float platformSetHeight = 6f;
 
 	private float levelTop;
@@ -14,12 +15,14 @@ public class LevelBuilderScript : MonoBehaviour {
 		mainCamera = GameObject.FindGameObjectWithTag ("MainCamera");
 		ySize = mainCamera.GetComponent<Camera> ().orthographicSize;
 
-		levelTop = transform.position.y;
+		levelTop = transform.position.y + startHeight;
 	}
 
 	void Update () {
 		while (mainCamera.transform.position.y + ySize >= levelTop) {
-			Instantiate (platformSet, new Vector3 (0f, levelTop, 0f), Quaternion.identity);
+			Instantiate (
+				platformSets[Random.Range(0, platformSets.Length)], 
+				new Vector3 (0f, levelTop, 0f), Quaternion.identity);
 			levelTop += platformSetHeight;
 		}
 	}

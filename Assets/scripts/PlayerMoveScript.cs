@@ -68,7 +68,7 @@ public class PlayerMoveScript : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D coll) {
 		// Drain health if hitting the bottom of the screen.
 		if (coll.CompareTag("BottomTrigger")) {
-			GetComponent<PlayerDamageScript>().DrainHealth ();
+			GetComponent<PlayerDeathScript>().Kill ("fell");
 		}
 	}
 }

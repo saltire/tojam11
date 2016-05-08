@@ -9,6 +9,7 @@ public class TitleSpotlightScript : MonoBehaviour {
 
 	private Vector3 startPos;
 	private Vector3 finalPos;
+	private float elapsed;
 
 	void Start () {
 		startPos = spotlight.transform.localPosition;
@@ -16,12 +17,14 @@ public class TitleSpotlightScript : MonoBehaviour {
 	}
 	
 	void Update () {
-		if (Time.time <= lightMoveTime) {
-			spotlight.transform.localPosition = Vector3.Lerp (startPos, finalPos, Time.time / lightMoveTime);
+		elapsed += Time.deltaTime;
+
+		if (elapsed <= lightMoveTime) {
+			spotlight.transform.localPosition = Vector3.Lerp (startPos, finalPos, elapsed / lightMoveTime);
 		} 
-		else if (Time.time <= lightMoveTime + fadeTime) {
+		else if (elapsed <= lightMoveTime + fadeTime) {
 			SpriteRenderer renderer = GetComponent<SpriteRenderer> ();
-			renderer.color = new Color (renderer.color.r, renderer.color.g, renderer.color.b, 1 - (Time.time - lightMoveTime) / fadeTime);
+			renderer.color = new Color (renderer.color.r, renderer.color.g, renderer.color.b, 1 - (elapsed - lightMoveTime) / fadeTime);
 		} 
 		else {
 			Destroy (gameObject);
