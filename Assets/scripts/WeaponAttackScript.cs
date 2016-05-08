@@ -3,51 +3,57 @@ using System.Collections;
 
 public class WeaponAttackScript : MonoBehaviour {
 
-	public float weaponSpeed = 0.1f;
-	public float weaponDistance = 2f;
+	public float weaponAttackTime = 0.5f;
+	public float weaponDistance = 0.5f;
 	public float weaponDPS = 1f;
 
-	private Collider2D c2d;
+	private Animator anim;
+	private Collider2D coll;
 	private bool isAttacking;
 	private bool isReturning;
-	private float weaponTime = 0f;
+	private float elapsed = 0f;
+	private float stageTime;
 
 	public void Attack () {
 		if (!isAttacking && !isReturning) {
+			Debug.Log ("Attack");
+			anim.SetTrigger ("Attack");
 			isAttacking = true;
-			c2d.enabled = true;
-			weaponTime = 0f;
+			coll.enabled = true;
+			elapsed = 0f;
 		}
 	}
 
 	void Start () {
-		c2d = GetComponent<Collider2D> ();
-		c2d.enabled = false;
+		anim = GetComponentInParent<Animator> ();
+		GetComponentInParent<PlayerSpriteScript> ().playerSpriteName = "weapon/player";
+
+		coll = GetComponent<Collider2D> ();
+		coll.enabled = false;
+
+		stageTime = weaponAttackTime / 2f;
 	}
 
 	void Update () {
 		if (isAttacking) {
-			weaponTime += Time.deltaTime;
-			transform.localPosition = Vector3.Lerp (
-				Vector3.zero, 
-				weaponDistance * Vector3.right, 
-				weaponTime / weaponSpeed);
+			elapsed += Time.deltaTime;
+			transform.localPosition = Vector3.Lerp (Vector3.zero, weaponDistance * Vector3.right, elapsed / stageTime);
 
-			if (weaponTime >= weaponSpeed) {
+			if (elapsed >= stageTime) {
 				isAttacking = false;
 				isReturning = true;
-				weaponTime = 0f;
+				elapsed = 0f;
 			}
 		} else if (isReturning) {
-			weaponTime += Time.deltaTime;
-			transform.localPosition = Vector3.Lerp (
-				Vector3.zero, 
-				weaponDistance * Vector3.right, 
-				1 - weaponTime / weaponSpeed);
+			elapsed += Time.deltaTime;
+			transform.localPosition = Vector3.Lerp (Vector3.zero, weaponDistance * Vector3.right, 1 - elapsed / stageTime);
 
-			if (weaponTime >= weaponSpeed) {
+			if (elapsed >= stageTime) {
 				isReturning = false;
-				c2d.enabled = false;
+				coll.enabled = false;
+
+				Debug.Log ("Finish");
+				anim.SetTrigger ("AttackFinished");
 			}
 		}
 	}

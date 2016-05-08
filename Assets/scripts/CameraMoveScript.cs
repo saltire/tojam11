@@ -11,7 +11,13 @@ public class CameraMoveScript : MonoBehaviour {
 	private GameObject[] players;
 
 	void Start () {
+		// Workaround for bug with FindGameObjectsWithTag returning useless clones
 		players = GameObject.FindGameObjectsWithTag ("Player");
+		foreach (GameObject obj in players) {
+			if (obj.name.Substring (obj.name.Length - 7) == "(Clone)") {
+				Destroy (obj);
+			}
+		}
 
 		Camera camera = gameObject.GetComponent<Camera> ();
 		xSize = camera.orthographicSize * camera.aspect;
@@ -23,6 +29,12 @@ public class CameraMoveScript : MonoBehaviour {
 		GameObject topPlayer = null;
 
 		foreach (GameObject player in players) {
+			// Check for buggy clones again.
+			Debug.Log(player.activeInHierarchy);
+			if (player == null || !player.activeSelf || player.name.Substring (player.name.Length - 7) == "(Clone)") {
+				continue;
+			}
+
 			avgPlayerPos += player.transform.position;
 
 			// Keep a reference to the player that is higher up on the screen.
