@@ -516,7 +516,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 112556}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 9e01431ede636e547b4252554ad062f5, type: 2}
+  m_Material: {fileID: 6200000, guid: 9602070c1e112dd439e35450e4300e88, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
@@ -558,7 +558,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 171060}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 9e01431ede636e547b4252554ad062f5, type: 2}
+  m_Material: {fileID: 6200000, guid: 9602070c1e112dd439e35450e4300e88, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
@@ -605,6 +605,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   crumbleLength: 0.75
   destroyTime: 10
+  fallDamage: 1
 --- !u!114 &11413780
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -618,6 +619,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   crumbleLength: 0.75
   destroyTime: 10
+  fallDamage: 1
 --- !u!114 &11423238
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -631,6 +633,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   crumbleLength: 0.75
   destroyTime: 10
+  fallDamage: 1
 --- !u!114 &11449002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -644,6 +647,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   crumbleLength: 0.75
   destroyTime: 10
+  fallDamage: 1
 --- !u!114 &11453318
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -657,6 +661,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   crumbleLength: 0.75
   destroyTime: 10
+  fallDamage: 1
 --- !u!114 &11454800
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -670,6 +675,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   crumbleLength: 0.75
   destroyTime: 10
+  fallDamage: 1
 --- !u!114 &11455630
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -683,6 +689,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   crumbleLength: 0.75
   destroyTime: 10
+  fallDamage: 1
 --- !u!212 &21220446
 SpriteRenderer:
   m_ObjectHideFlags: 1

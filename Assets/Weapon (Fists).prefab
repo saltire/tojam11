@@ -75,6 +75,8 @@ MonoBehaviour:
   weaponAttackTime: 0.5
   weaponDistance: 0.2
   weaponDPS: 1
+  weaponPush: 0.1
+  weaponCooldown: 0
   playerSpriteName: 
 --- !u!1001 &100100000
 Prefab:

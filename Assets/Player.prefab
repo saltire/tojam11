@@ -137,8 +137,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHealth: 5
-  drainAmount: 1
-  stunFactor: 0.1
+  drainRate: 1
+  stunFactor: 0.2
   stunned: 0
 --- !u!114 &11469910
 MonoBehaviour:

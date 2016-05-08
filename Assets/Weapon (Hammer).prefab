@@ -74,8 +74,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponAttackTime: 0.5
   weaponDistance: 0.4
-  weaponDPS: 2.5
-  weaponPush: 1
+  weaponDPS: 3
+  weaponPush: 500
+  weaponCooldown: 0.4
   playerSpriteName: weapon2
 --- !u!1001 &100100000
 Prefab:

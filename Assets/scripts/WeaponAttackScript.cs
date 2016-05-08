@@ -7,6 +7,7 @@ public class WeaponAttackScript : MonoBehaviour {
 	public float weaponDistance = 0.5f;
 	public float weaponDPS = 1f;
 	public float weaponPush = 0f;
+	public float weaponCooldown = 0.1f;
 	public string playerSpriteName;
 
 	private Animator anim;
@@ -14,10 +15,11 @@ public class WeaponAttackScript : MonoBehaviour {
 	private bool isAttacking;
 	private bool isReturning;
 	private float elapsed = 0f;
+	private float weaponCooldownTime = 0f;
 	private float stageTime;
 
 	public void Attack () {
-		if (!isAttacking && !isReturning) {
+		if (!isAttacking && !isReturning && weaponCooldownTime <= 0f) {
 			anim.SetTrigger ("Attack");
 			isAttacking = true;
 			coll.enabled = true;
@@ -27,6 +29,8 @@ public class WeaponAttackScript : MonoBehaviour {
 
 	void Start () {
 		anim = GetComponentInParent<Animator> ();
+
+		Animation an = GetComponentInParent<Animation> ();
 
 		coll = GetComponent<Collider2D> ();
 		coll.enabled = false;
@@ -48,16 +52,21 @@ public class WeaponAttackScript : MonoBehaviour {
 				isReturning = true;
 				elapsed = 0f;
 			}
-		} else if (isReturning) {
+		} 
+		else if (isReturning) {
 			elapsed += Time.deltaTime;
 			transform.localPosition = Vector3.Lerp (Vector3.zero, weaponDistance * Vector3.right, 1 - elapsed / stageTime);
 
 			if (elapsed >= stageTime) {
 				isReturning = false;
 				coll.enabled = false;
+				weaponCooldownTime = weaponCooldown;
 
 				anim.SetTrigger ("AttackFinished");
 			}
+		} 
+		else if (weaponCooldownTime > 0f) {
+			weaponCooldownTime -= Time.deltaTime;
 		}
 	}
 

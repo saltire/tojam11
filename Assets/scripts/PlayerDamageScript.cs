@@ -4,7 +4,7 @@ using System.Collections;
 public class PlayerDamageScript : MonoBehaviour {
 
 	public float playerHealth = 5f;
-	public float drainAmount = 1f;
+	public float drainRate = 1f;
 	public float stunFactor = 0.1f;
 	public bool stunned = false;
 
@@ -21,16 +21,18 @@ public class PlayerDamageScript : MonoBehaviour {
 		stunned = true;
 	}
 
-	void Update () {
-		if (draining) {
-			DealDamage (drainAmount);
-		}
-
+	void FixedUpdate () {
 		if (stunned) {
 			stunLength = Mathf.Max(0f, stunLength - Time.deltaTime);
 			if (stunLength == 0f) {
 				stunned = false;
 			}
+		}
+	}
+
+	void Update () {
+		if (draining) {
+			DealDamage (drainRate);
 		}
 
 		if (playerHealth <= 0f) {
