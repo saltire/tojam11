@@ -11,7 +11,7 @@ public class PlayerSpriteScript : MonoBehaviour {
 
 	void Start() {
 		if (playerSpriteName.Length > 0f) {
-			subSprites = Resources.LoadAll<Sprite> (playerSpriteName).ToList();
+			subSprites = Resources.LoadAll<Sprite> (playerSpriteName + "/player").ToList();
 		}
 	}
 	

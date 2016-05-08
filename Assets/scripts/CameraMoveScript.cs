@@ -30,7 +30,6 @@ public class CameraMoveScript : MonoBehaviour {
 
 		foreach (GameObject player in players) {
 			// Check for buggy clones again.
-			Debug.Log(player.activeInHierarchy);
 			if (player == null || !player.activeSelf || player.name.Substring (player.name.Length - 7) == "(Clone)") {
 				continue;
 			}

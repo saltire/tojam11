@@ -16,7 +16,6 @@ public class WeaponAttackScript : MonoBehaviour {
 
 	public void Attack () {
 		if (!isAttacking && !isReturning) {
-			Debug.Log ("Attack");
 			anim.SetTrigger ("Attack");
 			isAttacking = true;
 			coll.enabled = true;
@@ -26,7 +25,6 @@ public class WeaponAttackScript : MonoBehaviour {
 
 	void Start () {
 		anim = GetComponentInParent<Animator> ();
-		GetComponentInParent<PlayerSpriteScript> ().playerSpriteName = "weapon/player";
 
 		coll = GetComponent<Collider2D> ();
 		coll.enabled = false;
@@ -52,7 +50,6 @@ public class WeaponAttackScript : MonoBehaviour {
 				isReturning = false;
 				coll.enabled = false;
 
-				Debug.Log ("Finish");
 				anim.SetTrigger ("AttackFinished");
 			}
 		}

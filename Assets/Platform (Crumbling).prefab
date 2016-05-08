@@ -73,7 +73,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbe4ddccc2ba9cb4abeaceed55738554, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  crumbleLength: 1
+  crumbleLength: 0.75
   destroyTime: 10
 --- !u!212 &21281382
 SpriteRenderer:

@@ -6,14 +6,16 @@ public class HealthBarScript : MonoBehaviour {
 	public PlayerDamageScript player;
 
 	private float initialHealth;
-	private Vector3 initialScale;
+	private RectTransform rect;
+	private float initialXSize;
 
 	void Start () {
 		initialHealth = player.playerHealth;
-		initialScale = transform.localScale;
+		rect = GetComponent<RectTransform> ();
+		initialXSize = rect.sizeDelta.x;
 	}
 	
 	void Update () {
-		transform.localScale = Vector3.Scale(initialScale, new Vector3 (player.playerHealth / initialHealth, 1f, 1f));
+		rect.sizeDelta = new Vector2 (initialXSize * player.playerHealth / initialHealth, rect.sizeDelta.y);
 	}
 }
